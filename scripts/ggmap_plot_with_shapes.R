@@ -10,7 +10,7 @@ library(readxl)
 library(sf)
 library(ggplot2)
 
-setwd('/home/wdaniels/Documents/research/tropomi_project/scripts')
+setwd('/home/wdaniels/Documents/research/tropomi_project/DJemissions/scripts')
 source("functions.R")
 
 
@@ -31,7 +31,7 @@ city.lat <- c(39.748102, 40.018350, 40.582626, 38.835280, 41.141464)
 city.names <- c("Denver", "Boulder", "Fort Collins", "Colorado Springs", "Cheyenne")
 cities <- data.frame("lon" = city.lon, "lat" = city.lat, "names" = city.names)
 
-ggmap::register_google(key = "AIzaSyCwpdBLfC_5uOD9bKbnI4HYkc-uzowcqdU")
+ggmap::register_google(key = as.character(read.table('../../key.txt')[1,1]))
 
 data <- readRDS('../data/methane/ne_co/all.RData')
 data <- data[order(data$time),]
